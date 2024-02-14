@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Quiz Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="quiz-container">
+    <h1>Coding Quiz Challenge</h1>
+    <div id="high-scores-container">
+      <h2>High Scores</h2>
+      <ul id="high-scores"></ul>
+    </div>
+    <button id="start-btn">Start Quiz</button>
+    <div id="question-container" class="hide">
+      <div id="question"></div>
+      <div id="answer-buttons" class="btn-grid">
+        <!-- Answer buttons will be dynamically inserted here -->
+      </div>
+    </div>
+    <div id="timer">Time: <span id="time">0</span>s</div>
+    <div id="end-screen" class="hide">
+      <h2>Quiz Over!</h2>
+      <input type="text" id="initials" placeholder="Enter initials" required>
+      <button id="submit-btn">Submit</button>
+      <button id="reset-btn" class="btn">Reset Quiz</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
