@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
     let shuffledQuestions, currentQuestionIndex;
-    let quizTimer = 60; // Timer set for 60 seconds
+    let quizTimer = 60; 
     let timerId;
-    let score = 0; // Initialize score
+    let score = 0; 
   
     startButton.addEventListener('click', startGame);
     submitButton.addEventListener('click', saveScore);
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       questionContainerElement.classList.remove('hide');
       setNextQuestion();
       startTimer();
-      score = 0; // Reset score at the start
+      score = 0; 
     }
   
     function startTimer() {
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setStatusClass(button, button.dataset.correct);
       });
       if (correct) {
-        score += 10; // Add score for correct answer
+        score += 10; 
       } else {
-        score -= 5; // Subtract score for incorrect answer
+        score -= 5; 
       }
       if (shuffledQuestions.length > currentQuestionIndex + 1) {
         setTimeout(() => {
@@ -108,27 +108,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function endGame() {
       clearInterval(timerId);
       questionContainerElement.classList.add('hide');
-      // No need to immediately display the high scores here
-      // since we want to wait for initials to be entered.
-      highScoresContainer.style.display = 'none';
+       highScoresContainer.style.display = 'none';
       endScreenElement.classList.remove('hide');
-      // Do not append the current score yet; wait for initials to be submitted
+  
     }
   
     function displayHighScores() {
       const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
       highScores.sort((a, b) => b.score - a.score);
-      highScoresList.innerHTML = ''; // Clear current high scores list
+      highScoresList.innerHTML = ''; 
   
-      // Display only the highest score from the list
+      
       if (highScores.length > 0) {
         const highestScore = highScores[0];
         highScoresList.innerHTML += `<li>Highest Score: ${highestScore.initials} - ${highestScore.score}</li>`;
       }
   
-      // Now that initials have been submitted, display the current score
-      // No need to append it to the list, just display it below the list
-      const currentScoreDisplay = document.querySelector('#current-score');
+        const currentScoreDisplay = document.querySelector('#current-score');
       if (!currentScoreDisplay) {
         const currentScoreElement = document.createElement('div');
         currentScoreElement.id = 'current-score';
@@ -145,49 +141,46 @@ document.addEventListener('DOMContentLoaded', () => {
         const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
         const newScore = { score: score, initials: initials };
   
-        // Check if the current score is greater than the highest score
-        if (!highScores.length || score > highScores[0].score) {
-          // Update the highest score
-          highScores.unshift(newScore); // Add the new score at the beginning of the array
-          highScores.sort((a, b) => b.score - a.score); // Sort to make sure order is correct
-          highScores.splice(5); // Optionally keep only the top 5 scores
-        }
+              if (!highScores.length || score > highScores[0].score) {
+       
+          highScores.unshift(newScore); 
+          highScores.sort((a, b) => b.score - a.score); 
+          highScores.splice(5); 
   
         localStorage.setItem('highScores', JSON.stringify(highScores));
         initialsElement.value = '';
         endScreenElement.classList.add('hide');
         highScoresContainer.style.display = 'block';
-        displayHighScores(); // Now display the high scores with the current score
+        displayHighScores(); 
       } else {
         alert('Please enter your initials!');
       }
     }
   
     function resetGame() {
-      // Stop and reset the timer
+   
       clearInterval(timerId);
       quizTimer = 60;
-      timerElement.textContent = 'Time: 0s'; // Reset the text content of the timer
-  
-      // Reset the score
+      timerElement.textContent = 'Time: 0s'; 
+      
       score = 0;
   
       // Reset the display of various elements
-      questionContainerElement.classList.add('hide'); // Hide the question container
-      endScreenElement.classList.add('hide'); // Hide the end screen
-      highScoresContainer.style.display = 'none'; // Hide the high scores container
-      startButton.classList.remove('hide'); // Show the start button
+      questionContainerElement.classList.add('hide'); 
+      endScreenElement.classList.add('hide'); 
+      highScoresContainer.style.display = 'none'; 
+      startButton.classList.remove('hide'); 
   
-      // Clear the status classes (correct/wrong) from all elements
+      
       clearStatusClass(document.body);
       document.querySelectorAll('.btn').forEach(button => {
         clearStatusClass(button);
       });
   
-      // Clear any input fields
+  
       initialsElement.value = '';
   
-      // Reset the high scores list display
+ 
       highScoresList.innerHTML = '';
       displayHighScores();
     }
@@ -283,6 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
   
-    displayHighScores(); // Display high scores at the beginning
+    displayHighScores(); 
   });
   

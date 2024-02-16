@@ -133,7 +133,7 @@ body {
     color: white;
   }
   
-  /* Animation for correct/wrong answers */
+
   @keyframes shake {
   
     0%,
@@ -156,7 +156,6 @@ body {
     animation: shake 0.5s linear;
   }
   
-  /* Style for current score display */
   #current-score {
     font-size: 20px;
     font-weight: bold;
@@ -164,13 +163,11 @@ body {
     margin-top: 10px;
   }
   
-  /* Hover effect for list items */
   #high-scores li:hover {
     color: #17a2b8;
     cursor: pointer;
   }
   
-  /* Responsive design for smaller devices */
   @media (max-width: 768px) {
     body {
       background-color: #e2ebf0;
